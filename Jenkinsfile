@@ -8,8 +8,8 @@ pipeline {
     }
     stage('compile maven code') {
       steps {
-        sh '''export PATH = $PATH:/usr/maven/bin
-mvn clean package'''
+        export PATH = $PATH:/usr/maven/bin
+        mvn clean package
       }
     }
     stage('copying File Locally') {

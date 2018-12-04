@@ -2,7 +2,7 @@
 
 # Version JDK8
 
-FROM centos
+FROM centos:latest
 
 MAINTAINER Avinash Singh, avinashsi7@hotmail.com
 
@@ -27,12 +27,12 @@ RUN rm /tmp/jdk-8u131-linux-x64.rpm
 
 
 ######Install Tomcat###############################
-RUN wget http://apache.mirrors.nublue.co.uk/tomcat/tomcat-8/v8.0.53/bin/apache-tomcat-8.0.53.zip
+RUN wget http://mirrors.ukfast.co.uk/sites/ftp.apache.org/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35.zip
 RUN yum install -y unzip
-RUN unzip apache-tomcat-8.0.53.zip
-RUN mv apache-tomcat-8.0.53 /home/tomcat
+RUN unzip apache-tomcat-8.5.35.zip
+RUN mv apache-tomcat-8.5.35 /home/tomcat
 RUN chmod 777 /home/tomcat/bin/*
-RUN rm -fr apache-tomcat-8.0.53.zip
+RUN rm -fr apache-tomcat-8.5.35.zip
 
 ######Deploy helloworld josn File ##################
 
@@ -46,8 +46,8 @@ ENV CATALINA_HOME /home/tomcat
 ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
 
 EXPOSE 8080
-VOLUME /home/tomcat/webapps/app
-VOLUME /scripts
+#VOLUME /home/tomcat/webapps/app
+#VOLUME /scripts
 ####################################################
 ENTRYPOINT /home/tomcat/bin/startup.sh && tail -f /home/tomcat/logs/catalina.out
 
@@ -55,4 +55,3 @@ ENTRYPOINT /home/tomcat/bin/startup.sh && tail -f /home/tomcat/logs/catalina.out
 CMD ["/home/tomcat/bin/startup.sh"]
 
 #####################################################d
-

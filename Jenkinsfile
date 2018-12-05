@@ -35,6 +35,6 @@ EOL'''
     }
   }
   environment {
-    PATH = '$PATH:/usr/maven/bin'
+    PATH = '$PATH:/usr/maven/bin/'
   }
 }

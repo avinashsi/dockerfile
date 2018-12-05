@@ -13,7 +13,7 @@ pipeline {
     }
     stage('copying File Locally') {
       steps {
-        sh 'cp /var/lib/jenkins/workspace/dockerfile_master/target/trucks.war /home/vagrant/files/app_data/application1/'
+        sh 'sudo cp /var/lib/jenkins/workspace/dockerfile_master/target/trucks.war /home/vagrant/files/app_data/application1/'
       }
     }
     stage('Get The DockerFile') {

@@ -46,6 +46,7 @@ EOL'''
         withDockerRegistry([ credentialsId: "be1c99b3-1c81-431b-aecd-9dcf9e6f1091", url: "" ]) {
           sh 'docker push tomcat/terraform:":$BUILD_NUMBER"'
           }
+        }
       }
   }
 }

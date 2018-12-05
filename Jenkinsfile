@@ -37,14 +37,12 @@ EOL'''
         sh 'sudo docker build -t  avinashsi/tomcat":$BUILD_NUMBER" /var/lib/jenkins/workspace/dockerfile_master/Tomcat8_Dockerfile'
       }
     }
-    
     stage('Run Test') {
       steps {
         sh 'echo "Deploy Container on Dev Env"'
         sh 'echo "Run tests "'
       }
     }
-    
     stage('Publish Image') {
       when {
         branch 'master'

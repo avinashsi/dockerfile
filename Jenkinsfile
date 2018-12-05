@@ -62,6 +62,9 @@ EOL'''
           }
         }
       }
+      
+      build 'Declarative pipeline'
+      
     }
   }
 }

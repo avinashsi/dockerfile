@@ -30,7 +30,7 @@ EOL'''
     }
     stage('Docker Image Build') {
       steps {
-        sh 'docker build -t  tomcat":$BUILD_NUMBER" /var/lib/jenkins/workspace/dockerfile_master/Tomcat8_Dockerfile'
+        sh 'sudo docker build -t  tomcat":$BUILD_NUMBER" /var/lib/jenkins/workspace/dockerfile_master/Tomcat8_Dockerfile'
       }
     }
   }

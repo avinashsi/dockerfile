@@ -62,9 +62,6 @@ EOL'''
           }
         }
       }
-      
-      build 'Declarative pipeline'
-      
-    }
+     }
   }
 }

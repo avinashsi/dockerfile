@@ -8,7 +8,7 @@ pipeline {
     }
     stage('compile code') {
       steps {
-        sh 'mvn clean package'
+        sh '/usr/maven/bin/mvn clean package'
       }
     }
     stage('copying File Locally') {
@@ -33,8 +33,5 @@ EOL'''
         sh 'docker build -t  tomcat":$BUILD_NUMBER" /dockerfile/Tomcat8_Dockerfile/'
       }
     }
-  }
-  environment {
-    PATH = '$PATH:/usr/maven/bin/'
   }
 }

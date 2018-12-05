@@ -34,7 +34,7 @@ EOL'''
     }
     stage('Docker Image Build') {
       steps {
-        sh 'sudo docker build -t  tomcat":$BUILD_NUMBER" /var/lib/jenkins/workspace/dockerfile_master/Tomcat8_Dockerfile'
+        sh 'sudo docker build -t  avinashsi/tomcat":$BUILD_NUMBER" /var/lib/jenkins/workspace/dockerfile_master/Tomcat8_Dockerfile'
       }
     }
     stage('Publish Image') {
@@ -43,7 +43,7 @@ EOL'''
       }
       steps {
         withDockerRegistry(credentialsId: 'be1c99b3-1c81-431b-aecd-9dcf9e6f1091', url: 'https://index.docker.io/v1/') {
-          sh 'docker push tomcat/terraform:":$BUILD_NUMBER"'
+          sh 'docker push avinashsi/tomcat:"$BUILD_NUMBER"'
         }
 
       }

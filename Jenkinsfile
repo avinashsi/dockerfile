@@ -37,5 +37,15 @@ EOL'''
         sh 'sudo docker build -t  tomcat":$BUILD_NUMBER" /var/lib/jenkins/workspace/dockerfile_master/Tomcat8_Dockerfile'
       }
     }
+    
+   stage('Publish Image') {
+      when {
+        branch 'master'
+      }
+      steps {
+        withDockerRegistry([ credentialsId: "be1c99b3-1c81-431b-aecd-9dcf9e6f1091", url: "" ]) {
+          sh 'docker push tomcat/terraform:":$BUILD_NUMBER"'
+          }
+      }
   }
 }

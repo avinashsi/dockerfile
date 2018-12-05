@@ -21,7 +21,7 @@ pipeline {
         stage('Add the war file') {
           steps {
             sh '''cat >> /var/lib/jenkins/workspace/dockerfile_master/Tomcat8_Dockerfile/Dockerfile <<EOL
-ADD /var/lib/jenkins/workspace/dockerfile_master/target/trucks.war /home/tomcat/webapps/
+ADD trucks.war /home/tomcat/webapps/
 EOL'''
           }
         }

@@ -42,7 +42,7 @@ EOL'''
         branch 'master'
       }
       steps {
-        withDockerRegistry(credentialsId: 'be1c99b3-1c81-431b-aecd-9dcf9e6f1091', url: 'https://index.docker.io/v1/') {
+        withDockerRegistry(credentialsId: 'be1c99b3-1c81-431b-aecd-9dcf9e6f1091', url: 'https://hub.docker.com') {
           sh 'docker push tomcat/terraform:":$BUILD_NUMBER"'
         }
 

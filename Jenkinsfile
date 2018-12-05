@@ -44,14 +44,23 @@ EOL'''
       }
     }
     stage('Publish Image') {
-      when {
-        branch 'master'
-      }
-      steps {
-        withDockerRegistry(credentialsId: 'be1c99b3-1c81-431b-aecd-9dcf9e6f1091', url: 'https://index.docker.io/v1/') {
-          sh 'docker push avinashsi/tomcat:"$BUILD_NUMBER"'
-        }
+      parallel {
+        stage('Publish Image') {
+          when {
+            branch 'master'
+          }
+          steps {
+            withDockerRegistry(credentialsId: 'be1c99b3-1c81-431b-aecd-9dcf9e6f1091', url: 'https://index.docker.io/v1/') {
+              sh 'docker push avinashsi/tomcat:"$BUILD_NUMBER"'
+            }
 
+          }
+        }
+        stage('Updating Jira Ticket') {
+          steps {
+            jiraComment(issueKey: 'DTP-9', body: 'Image is Pushed in repo')
+          }
+        }
       }
     }
   }

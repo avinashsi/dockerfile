@@ -16,7 +16,7 @@ pipeline {
         git(url: 'https://github.com/avinashsi/dockerfile.git', branch: 'master', credentialsId: '767b72ca-de52-4da5-9b39-282425c14dcd')
       }
     }
-    stage('Add the war file') {
+    stage('Moving war file') {
       parallel {
         stage('Add the war file') {
           steps {
@@ -25,7 +25,7 @@ ADD trucks.war /home/tomcat/webapps/
 EOL'''
           }
         }
-        stage('Copy the war file') {
+        stage('Adding War file in Docker Image') {
           steps {
             sh 'sudo cp /var/lib/jenkins/workspace/dockerfile_master/target/trucks.war /var/lib/jenkins/workspace/dockerfile_master/Tomcat8_Dockerfile'
           }
@@ -62,6 +62,6 @@ EOL'''
           }
         }
       }
-     }
+    }
   }
 }
